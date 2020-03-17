@@ -1,5 +1,6 @@
 from model import todo_list
-from view import root, update_view
+from controller import update_view
+from view import root
 
 
 update_view()
