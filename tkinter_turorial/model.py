@@ -29,8 +29,5 @@ class TodoList(UserList):
     def pop(self):
         self.data.pop()
 
-    def __del__(self, index: int):
-        del self.data[index]
-
     def __iter__(self):
         return iter(self.data)
