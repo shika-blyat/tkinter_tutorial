@@ -14,7 +14,7 @@ def create_new_item():
 def delete_selected_item():
     active = view_list.curselection()
     if len(active) != 0:
-        todo_list.delete_element(active[0])
+        todo_list.remove(active[0])
         update_view()
 
 

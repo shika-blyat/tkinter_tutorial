@@ -15,7 +15,7 @@ class TodoList:
     def add_element(self, todo):
         self.todo_list.append(todo)
 
-    def delete_element(self, idx):
+    def remove(self, idx):
         self.todo_list.pop(idx)
 
 
