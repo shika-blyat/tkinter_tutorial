@@ -24,5 +24,9 @@ def update_view():
         view_list.insert(tk.END, item)
 
 
+todo_content = tk.StringVar()
+todo_textbox.config(textvariable=todo_content)
+
 del_item_button.config(command=delete_selected_item)
 add_item_button.config(command=create_new_item)
+
