@@ -1,4 +1,3 @@
-from model import todo_list
 from controller import update_view
 from view import root
 

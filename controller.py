@@ -1,13 +1,13 @@
 import tkinter as tk
 
-from model import TodoList, todo_list
+from model import TodoList, TodoElement, todo_list
 from view import todo_textbox, del_item_button, add_item_button, view_list
 
 
 def create_new_item():
     content = todo_textbox.get()
     if content.strip() != "":
-        todo_list.add_element(content)
+        todo_list.add_element(TodoElement(content))
     update_view()
 
 
