@@ -1,7 +1,7 @@
 import tkinter as tk
 from . import model
 from . import view
-
+from json import dumps
 
 state = {
     "todo_list": model.TodoList(),
@@ -14,9 +14,17 @@ def setup():
     bind_variables()
 
 
+def save_list_in_json():
+    with open("todo_list.json", "w+") as f:
+        json = dumps({"todo_list": [i.content for i in state["todo_list"]]}, indent=4)
+        f.write(json)
+    view.root.after(5000, save_list_in_json)
+
+
 def mainloop():
     update_view()
     view.root.geometry("")
+    view.root.after(0, save_list_in_json)
     view.root.minsize(500, 300)
     view.root.mainloop()
 
@@ -39,7 +47,7 @@ def delete_selected_item():
 
 def update_view():
     view.todo_list.delete(0, tk.END)
-    for todo in state['todo_list']:
+    for todo in state["todo_list"]:
         view.todo_list.insert(tk.END, todo.content)
 
 
