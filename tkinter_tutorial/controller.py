@@ -15,6 +15,9 @@ def setup():
 
 
 def save_list_in_json():
+    """
+    Save the current state of the todo list in a json file and setup another save for 5 seconds later
+    """
     with open("todo_list.json", "w+") as f:
         json = dumps({"todo_list": [i.content for i in state["todo_list"]]}, indent=4)
         f.write(json)
@@ -30,6 +33,9 @@ def mainloop():
 
 
 def create_new_item():
+    """
+    Create a new item in the global todo list
+    """
     content = state["new_todo_content"].get().strip()
     if content:
         todo = model.TodoElement(content)
@@ -38,6 +44,9 @@ def create_new_item():
 
 
 def delete_selected_item():
+    """
+    Delete the currently selected item in the global todo_list
+    """
     active = view.todo_list.curselection()
     if len(active) != 0:
         todo_index = active[0]
@@ -52,9 +61,15 @@ def update_view():
 
 
 def bind_buttons():
+    """
+    Bind the related function to create and delete button
+    """
     view.del_item_button.config(command=delete_selected_item)
     view.add_item_button.config(command=create_new_item)
 
 
 def bind_variables():
+    """
+    Bind the TkString global variable to the textbox
+    """
     view.todo_textbox.config(textvariable=state["new_todo_content"])
