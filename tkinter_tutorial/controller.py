@@ -19,10 +19,10 @@ def save_list_in_json():
     Save the current state of the todo list in a json file and setup another save for 5 seconds later
     """
     with open("todo_list.json", "w+") as f:
-        json = json.dumps(
+        json_content = json.dumps(
             {"todo_list": [i.content for i in state["todo_list"]]}, indent=4
         )
-        f.write(json)
+        f.write(json_content)
     view.root.after(5000, save_list_in_json)
 
 
