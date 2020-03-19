@@ -1,7 +1,7 @@
 import tkinter as tk
 from . import model
 from . import view
-from json import dumps
+import json
 
 state = {
     "todo_list": model.TodoList(),
@@ -19,7 +19,9 @@ def save_list_in_json():
     Save the current state of the todo list in a json file and setup another save for 5 seconds later
     """
     with open("todo_list.json", "w+") as f:
-        json = dumps({"todo_list": [i.content for i in state["todo_list"]]}, indent=4)
+        json = json.dumps(
+            {"todo_list": [i.content for i in state["todo_list"]]}, indent=4
+        )
         f.write(json)
     view.root.after(5000, save_list_in_json)
 
